@@ -17,6 +17,10 @@ void testGraph(){
   } else {
     std::cout << "SUCCESS: Got the right edge cost for non-existent edge" << std::endl;
   }
+    g.addEdge(1 ,2,50);
+    g.addEdge(1,3,50);
+    g.addEdge(2,1,50);
+    g.DFS(0);
   
   g.removeEdge(1,0);
   if(g.getCost(0,1) != -1 || g.getCost(1,0) != -1){
@@ -30,6 +34,6 @@ void testGraph(){
 
 int main(){
   testGraph();
-
+  
   return 0;
 }
