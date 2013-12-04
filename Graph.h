@@ -17,11 +17,13 @@ public:
 
   double cost;
   int dest; //Destination node number
+    
 };
 
 class Node{
 public:
   std::vector<Edge> edgeList;
+   // bool visited=false;
 };
 
 //A Graph is just a list of nodes, where each node is responsible
@@ -43,6 +45,8 @@ public:
   //Remove the edge from node1 to node2, and also from node2 to node1.
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
+  
+    void BFS(int startingNode);
 
 private:
   std::vector<Node> adjList;	
