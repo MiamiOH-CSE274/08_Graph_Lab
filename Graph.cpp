@@ -28,6 +28,16 @@ void Graph::addEdge(int node1, int node2, double cost){
 		throw new std::string("The cost of an edge cannot be negative.");
 	}
 	else{
+		// If the edge already exists, just update the cost and return
+		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
+			if (adjList[node1].edgeList[i].dest == node2){
+				adjList[node1].edgeList[i].cost = cost;
+				adjList[node2].edgeList[i].cost = cost;
+				return;
+			}
+		}
+		// Otherwise, add and Edge to node1's list of edges
+		// and to node2's list of edges
 		adjList[node1].edgeList.push_back(Edge(cost, node2));
 		adjList[node2].edgeList.push_back(Edge(cost, node1));
 	}
@@ -36,10 +46,12 @@ void Graph::addEdge(int node1, int node2, double cost){
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
+	// Look for the edge in node1's list of edges and erase it
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
 		if (adjList[node1].edgeList[i].dest == node2)
 			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin() + i);
 	}
+	// Look for the edge in node2's list of edges and erase it
 	for (unsigned int i = 0; i < adjList[node2].edgeList.size(); i++){
 		if (adjList[node2].edgeList[i].dest == node1)
 			adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + i);
