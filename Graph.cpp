@@ -5,6 +5,14 @@
  */
 #include "Graph.h"
 
+
+// Caroline Danzi
+// 18 November 2014
+
+// Originality Note: I worked by myself on this assigment.
+// I looked up how to construct and use vectors on cplusplus.com
+// and looked at their example code for syntax help.
+
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
 }
