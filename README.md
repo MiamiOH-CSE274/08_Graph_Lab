@@ -43,6 +43,17 @@ TODO
 | **7** | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 
 | **8** | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 
 | **9** | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 
+#####Adjacency List
+| 0 |->| 2 |->| 3 |->| 5 |
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+| 5 |
+| 6 |
+| 7 |
+| 8 |
+| 9 |
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
 TODO
