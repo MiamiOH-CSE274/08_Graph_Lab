@@ -6,7 +6,6 @@
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-  //TODO
 }
 
 int Graph::getCost(int node1, int node2){
