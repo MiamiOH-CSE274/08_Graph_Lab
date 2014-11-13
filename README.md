@@ -44,6 +44,7 @@ TODO
 | **8** | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 0 | 1 | 
 | **9** | 0 | 0 | 0 | 0 | 1 | 1 | 0 | 0 | 1 | 0 | 
 #####Adjacency List
+An adjacency list has one list of the nodes, where each node points to a List of the other nodes it shares an edge with.  http://instagram.com/p/vUsqmwOPN0/  (PS this is my roommate's Instagram, just to warn you.)
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
