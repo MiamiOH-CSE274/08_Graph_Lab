@@ -9,9 +9,9 @@ Graph::Graph(unsigned int numNodes){
   //TODO
 }
 
-int Graph::getCost(int node1, int node2){
+double Graph::getCost(int node1, int node2){
   //TODO
-  return -1;
+  return -1.0;
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
