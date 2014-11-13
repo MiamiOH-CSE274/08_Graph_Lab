@@ -28,8 +28,8 @@ void Graph::addEdge(int node1, int node2, double cost){
 		throw new std::string("The cost of an edge cannot be negative.");
 	}
 	else{
-		adjList[node1].edgeList[node2].cost = cost;
-		adjList[node2].edgeList[node1].cost = cost;
+		adjList[node1].edgeList.push_back(Edge(cost, node2));
+		adjList[node2].edgeList.push_back(Edge(cost, node1));
 	}
 }
 
