@@ -48,4 +48,4 @@ An adjacency list has one list of the nodes, where each node points to a List of
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+The hardest part for me was figuring out how to use and think about the vector class.  I kept getting a lot of syntax errors. Students next semester: read about vectors before attempting to use them!
