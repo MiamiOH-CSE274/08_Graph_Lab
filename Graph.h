@@ -12,8 +12,17 @@
 //The edge class has only a cost and a destination.
 class Edge{
 public:
-	Edge(double c, int d){cost = c; dest = d;};
-	Edge(){cost = -1; dest = -1;};
+	Edge(double c, int d)
+	{
+		cost = c; 
+		dest = d;
+	};
+	
+	Edge()
+	{
+		cost = -1; 
+		dest = -1;
+	};
 
 	double cost;
 	int dest; //Destination node number
@@ -33,8 +42,8 @@ public:
   
 	//Return the cost of the edge from node1 to node2. If there
 	// is no edge, return -1.
-	int getCost(int node1, int node2);
-
+	double getCost(int node1, int node2);
+	
 	//Add an edge from node1 to node2, and from node2 to node1, with
 	// the given cost. If the cost is < 0, throw a string exception.
 	// If the edge already exists, just update the cost
