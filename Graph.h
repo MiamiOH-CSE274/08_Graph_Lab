@@ -12,8 +12,17 @@
 //The edge class has only a cost and a destination.
 class Edge{
 public:
-	Edge(double c, int d){cost = c; dest = d;};
-	Edge(){cost = -1; dest = -1;};
+	Edge(double c, int d)
+	{
+		cost = c; 
+		dest = d;
+	};
+	
+	Edge()
+	{
+		cost = -1; 
+		dest = -1;
+	};
 
 	double cost;
 	int dest; //Destination node number
