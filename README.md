@@ -23,7 +23,7 @@ Questions
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
-1. add - TODO
+1. add - addEdge has two cases: if the edge already exists, or if a new edge must be made. In the first case, we end up looking through the edgeLists of both nodes in question to find the edge that exists in order to update its cost. In the worst case, each of these nodes would have d edges (the maximum degree of any node in the graph). Therefore, we would look thorugh 2d spaces in the vector, so the running time would be O(d). In the second case where we must make new edges, we still have to check to see if an edge already exists. Since no edge exists, we will end up looking through all the edges for one of the nodes. In the worst case, this takes O(d) time. However, to create an edge I used the push_back function in the vector class. After reading a bit about it, it would appear that this function has to move all the elements to a new array since we are adding another one, which would take O(d) time in the worst case (if the node we are adding the edge to has d edges). Since we do this twice, the total running time would be d + d + d = 3d, so the running time for the second case is O(d). Therefore, since the worst-case running times for both cases of addEdge equal O(d), the worst case running time for addEdge is O(d). 
 2. remove - TODO
 3. getCost - TODO
 
