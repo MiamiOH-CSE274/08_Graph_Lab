@@ -44,10 +44,16 @@ void Graph::addEdge(int node1, int node2, double cost){
 	}
 	else{
 		// If the edge already exists, just update the cost and return
+		// First look through node1's edgeList to see if there is an edge to node2
 		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
+			// If there is an edge, update the cost in node1's list...
 			if (adjList[node1].edgeList[i].dest == node2){
 				adjList[node1].edgeList[i].cost = cost;
-				adjList[node2].edgeList[i].cost = cost;
+				// Then find the edge in node2's list and update its cost
+				for (unsigned int j = 0; j < adjList[node2].edgeList.size(); j++){
+					if (adjList[node2].edgeList[i].dest == node1)
+						adjList[node2].edgeList[i].cost = cost;
+				}
 				return;
 			}
 		}
