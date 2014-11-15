@@ -17,9 +17,9 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - I think add works, though I had trouble testing the exception throwing.  I also threw exceptions if the nodes were not in the graph, which was not required but I felt that it could be an issue.
+2. remove - I think remove works. It looks through the edgeLists of the nodes to find the edge that goes to the other node, erases that edge, and then returns. 
+3. getCost - I think getCost works because it looks through node1's edgeList to find an edge that goes to node2 and returns the cost of that edge. If there is no edge, it will return -1.0.
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
