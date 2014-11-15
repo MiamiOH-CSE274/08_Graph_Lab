@@ -35,6 +35,13 @@ void Graph::addEdge(int node1, int node2, double cost){
 	if (cost < 0){
 		throw new std::string("The cost of an edge cannot be negative.");
 	}
+	// Throw exceptions if the nodes are not in the graph
+	if (node1 > adjList.size() || node1 < 0){
+		throw new std::string("The first node is not in this graph.");
+	}
+	if (node2 > adjList.size() || node2 < 0){
+		throw new std::string("The second node is not in this graph.");
+	}
 	else{
 		// If the edge already exists, just update the cost and return
 		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
