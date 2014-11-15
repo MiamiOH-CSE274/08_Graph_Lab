@@ -34,5 +34,8 @@ void testGraph(){
 int main(){
 	testGraph();
 
+	Graph graph(5);
+	graph.addEdge(1, 6, 2);
+
 	return 0;
 }
