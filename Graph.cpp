@@ -69,12 +69,18 @@ void Graph::addEdge(int node1, int node2, double cost){
 void Graph::removeEdge(int node1, int node2){
 	// Look for the edge in node1's list of edges and erase it
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
-		if (adjList[node1].edgeList[i].dest == node2)
+		// If the edge exists, erase it. Then look for the edge in node2's list
+		if (adjList[node1].edgeList[i].dest == node2){
 			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin() + i);
+			// Look for the edge in node2's list of edges and erase it
+			for (unsigned int i = 0; i < adjList[node2].edgeList.size(); i++){
+				if (adjList[node2].edgeList[i].dest == node1){
+					adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + i);
+					// We no longer need to look for the edge, so just return
+					return;
+				}
+			}
+		}
 	}
-	// Look for the edge in node2's list of edges and erase it
-	for (unsigned int i = 0; i < adjList[node2].edgeList.size(); i++){
-		if (adjList[node2].edgeList[i].dest == node1)
-			adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + i);
-	}
+
 }
