@@ -6,7 +6,7 @@
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-  //TODO
+	adjList.resize(numNodes);
 }
 
 int Graph::getCost(int node1, int node2){
@@ -17,7 +17,7 @@ int Graph::getCost(int node1, int node2){
 //Add an edge from node1 to node2, and from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
 void Graph::addEdge(int node1, int node2, double cost){
-  //TODO
+	adjList[node1 - 1].add(
 }
 
 //Remove the edge from node1 to node2, and also from node2 to node1.
