@@ -6,11 +6,18 @@
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-  //TODO
+
+	adjList.resize(numNodes);
+
 }
 
 double Graph::getCost(int node1, int node2){
-  //TODO
+
+	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++)
+		if (adjList[node1].edgeList[i].dest == node2)
+			return adjList[node1].edgeList[i].cost;
+
+
   return -1.0;
 }
 
