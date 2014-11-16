@@ -27,7 +27,7 @@ Questions
 2. remove - O(1 + m + m) because you access the node via the index in the array which is constant time and then must cycle through the list of edges, once for the removing of node2 from node1 and another for removing node1 from node2.
 3. getCost - O(1 + m) because you access node1 via its index in the array which is constant time and then getCost() cycles through m edges for node2.
 
-TODO
+
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
