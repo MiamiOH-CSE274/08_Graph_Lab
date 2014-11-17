@@ -19,7 +19,8 @@ Questions
 
 1. add - Add works well, as it is compromised of two parts. Firstly, if an edge to be added is already contained within the edge list, it is overwritten with the new cost. The other part 
 	of the function adds in the edge as if it were not previously there before. This takes constant time because it is just accessing vector elements.
-2. remove - TODO
+2. remove - Remove works, and uses some of the logic used in getCost in that each node is iterated through their respective edges to find the correct edge, and then that edge is erased. If
+	no edge is found that matches the requirements, nothing happens as the function is of type void.
 3. getCost - Get cost works, as it traverses through the edge list each element has to see if the node to be paired with is contained within. If no egde is shared between the nodes,
 	then a value of -1 is returned. 
 
