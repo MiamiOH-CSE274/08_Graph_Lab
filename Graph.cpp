@@ -1,7 +1,7 @@
 /*****
- * Author   : brinkmwj
- * Date     : 2009-11-06
- * Sources  : All code is original
+ * Author   : Chriw Mabe
+ * Date     : 2014-11-18
+ * Sources  : Headers - Dr. Brinkman, Inside of methods - Chris Mabe
  */
 #include "Graph.h"
 
