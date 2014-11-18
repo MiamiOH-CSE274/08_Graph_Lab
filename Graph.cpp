@@ -7,8 +7,8 @@
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
-	for (unsigned int i = 0; i < numNodes; i++)
-		adjList[i].edgeList.resize(numNodes - 1);
+	//for (unsigned int i = 0; i < numNodes; i++)
+	//	adjList[i].edgeList.resize(numNodes - 1);
 }
 
 double Graph::getCost(int node1, int node2){
