@@ -1,4 +1,6 @@
 #include "Graph.h"
+
+#include <stdlib.h>
 #include <iostream>
 
 void testGraph(){
