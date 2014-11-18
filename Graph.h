@@ -16,7 +16,8 @@ public:
 	int dest; //Destination node number
 
 	Edge(double c, int d){
-		cost = c; dest = d;
+		cost = c; 
+		dest = d;
 	}
 	Edge(){
 		cost = -1; 
