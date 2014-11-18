@@ -33,6 +33,8 @@ Case 2: The edge does not exist - In this case we have already looped through th
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
+Link to my masterpiece: http://i.imgur.com/FgJazb0.jpg?1
+
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
 Read up on the vector class for methods and given variables so you can easily understand what you're actually doing, especially with things like begin() (took me a long time to figure that one out).
