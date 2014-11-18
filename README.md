@@ -35,4 +35,4 @@ Case 2: The edge does not exist - In this case we have already looped through th
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+Read up on the vector class for methods and given variables so you can easily understand what you're actually doing, especially with things like begin() (took me a long time to figure that one out).
