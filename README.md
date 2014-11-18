@@ -35,4 +35,4 @@ https://docs.google.com/a/miamioh.edu/document/d/1-2JsQeAoNIj6eCd-CUfdTKCmD_8l8K
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+Don't be hesitant to use online resources!
