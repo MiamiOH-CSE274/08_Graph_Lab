@@ -47,7 +47,7 @@ void Graph::removeEdge(int node1, int node2){
 			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin() + i);
 		
 			//then erase edge for node1 in node2's edgelist
-			for(unsigned int j = 0; j < adjList[node2].edgeList.size(); i++){
+			for(unsigned int j = 0; j < adjList[node2].edgeList.size(); j++){
 				if(adjList[node2].edgeList[j].dest == node1){
 					adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + j);
 				}
