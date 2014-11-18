@@ -17,9 +17,9 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - Yes, finds node1 in the list, adds an edge to node2, then vice versa for node2. If edge already exists, update the cost.
+2. remove - Yes, removes the edge between node1 and node2 and vice versa. If edge does not exist do nothing.
+3. getCost - Yes, returns the cost of the edge between node1 and node2.
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
