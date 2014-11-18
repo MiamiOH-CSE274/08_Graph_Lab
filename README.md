@@ -26,10 +26,10 @@ Questions
 1. add - There are two cases for add();
 Case 1: The edge already exists - In this case first we have to loop through the edgeList of node1 in order to find the the edge from node1 to node2, which in worst case is O(d), then we update the cost of that edge, an O(1) operation, totalling O(d) still for the operation thus far, then we do the same for node 2, which is also O(d) in the worst-case, giving the total operation O(2d), which means this operation is O(d).
 Case 2: The edge does not exist - In this case we have already looped through the edgelist for node1, so it is already O(d) in the best-case. In this case we simply call vector::push_back, which in worst case it reallocates, meaning O(n) so push_back is O(d) for in the worst case. This means case 2 is also O(d), so the worst case for add is O(d).
-2. remove - TODO
-3. getCost - TODO
+2. remove - Remove is very similar to add(), in that we have to loop through the edgeLists of node1 and node2 in order to find the correct edges, and we've established that the operation for doing so is O(d) in the worst case. That means we only have to look at the complexity of the erase method, which in the worst case(deleting the first element), would have to move all the elements behind it forward, which is also an O(d) operation, so the total complexity for remove() is O(d).
+3. getCost - In this operation we access the edgeList for node1 with the iterator, which is O(1), then we loop through that edgeList to find the edge to node 2, which is O(d), so the total complexity for this operation is O(d).
 
-TODO
+
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
