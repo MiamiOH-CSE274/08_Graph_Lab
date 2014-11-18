@@ -1,3 +1,12 @@
+/*****
+* Author   : Chris Mabe
+* Date     : 2014-11-18
+* Sources  : Headers - Dr. Brinkman, Inside of methods - Chris Mabe
+*
+* This project is all about graphs, edges, and nodes. It tests our
+* knowledge of adding/removing nodes and calculating edge costs.
+*/
+
 #include "Graph.h"
 #include <iostream>
 

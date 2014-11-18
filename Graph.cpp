@@ -1,12 +1,12 @@
 /*****
- * Author   : Chriw Mabe
+ * Author   : Chris Mabe
  * Date     : 2014-11-18
  * Sources  : Headers - Dr. Brinkman, Inside of methods - Chris Mabe
  */
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-  //TODO
+	adjList.resize(numNodes);
 }
 
 double Graph::getCost(int node1, int node2){
