@@ -29,6 +29,8 @@ Questions
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
+Here it is: http://instagram.com/p/vjjlyXCxJg/
+
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+I had trouble understanding the concept of adjList and edgeList to start, but once I overcome that, I was good to go. I would tell next years class to understand that concept and they will be ready for this assignment.
