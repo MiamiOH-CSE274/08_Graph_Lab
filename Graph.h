@@ -26,7 +26,7 @@ public:
 };
 
 
-//The node class has a edge list
+//The node class has an edge list
 class Node{
 public:
 	std::vector<Edge> edgeList;
