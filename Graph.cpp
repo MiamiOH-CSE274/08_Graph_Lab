@@ -25,11 +25,11 @@ double Graph::getCost(int node1, int node2){
         }
     }
     
-    //Returns -1.0 if the edge is not found/in the graph
+    //Returns -1.0 if the edge is not in node1's adjList
     return -1.0;
 }
 
-//Add an edge from node1 to node2, and from node2 to node1, with
+// Add an edge from node1 to node2, AND from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
 void Graph::addEdge(int node1, int node2, double cost){
     //check for a valid cost
@@ -46,14 +46,43 @@ void Graph::addEdge(int node1, int node2, double cost){
     }
     
     //Change the cost of the edge if it exists
-    
+    for(int i=0; i < adjList[node1].edgeList.size(); i++) {
+        //if node2 is the current iteration of i, change the cost
+        //and do the same for node2 to node1 edge
+        if(adjList[node1].edgeList[i].dest == node2) {
+            adjList[node1].edgeList[i].cost = cost;
+            
+            //Only executes this for loop if the edge already exists
+            //If outside outer for loop, would be executed again unnecessarily
+            for(int j=0; j < adjList[node2].edgeList.size(); j++) {
+                if(adjList[node2].edgeList[j].dest == node2) {
+                    adjList[node2].edgeList[j].cost = cost;
+                    return;
+                }
+            }
+        }
+    }
     
     //Edge does not exist, create edge in adjList with given cost
+    adjList[node1].edgeList.push_back(Edge(cost, node2));
+    adjList[node2].edgeList.push_back(Edge(cost, node1));
 }
 
-//Remove the edge from node1 to node2, and also from node2 to node1.
+// Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
-    //TODO
+    //Remove node2 from node1's adjList
+    for(int i=0; i < adjList[node1].edgeList.size(); i++) {
+        if(adjList[node1].edgeList[i].dest == node2) {
+            adjList[node1].edgeList.erase(adjList[node1].edgeList.begin() + i);
+        }
+    }
+    
+    //Remove node1 from node2's adjList
+    for(int j=0; j < adjList[node2].edgeList.size(); j++) {
+        if(adjList[node2].edgeList[j].dest == node1) {
+            adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + j);
+        }
+    }
 }
 
