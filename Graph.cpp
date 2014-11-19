@@ -26,7 +26,17 @@ void Graph::addEdge(int node1, int node2, double cost){
 		throw std::string("Error: The cost cannot be lower than 0");
 	}
 
-	
+	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
+		if (adjList[node1].edgeList[i].dest == node2) {
+			adjList[node1].edgeList[i].cost == cost;
+			for (unsigned int ii = 0; ii < adjList[node2].edgeList.size(); i++){
+				if (adjList[node2].edgeList[ii].dest == node1){
+					adjList[node2].edgeList[ii].cost = cost;
+					return;
+				}
+			}
+		}
+	}
 
 	adjList[node1].edgeList.push_back(Edge(cost, node2));
 	adjList[node2].edgeList.push_back(Edge(cost, node1));
