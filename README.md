@@ -17,7 +17,7 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - add correctly addes to edge objects, one to both vector of each node
+1. add - add correctly addes two edge objects, one to both vector of each node
 2. remove - removes the edge between the two nodes if it exists
 3. getCost - returns the cost of the edge if it exists, -1.0 if it doesnt
 
