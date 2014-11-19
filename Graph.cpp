@@ -7,8 +7,6 @@
 
 // Basic for loop from Open Data Structures, and the rest from me
 
-
-
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
 }
