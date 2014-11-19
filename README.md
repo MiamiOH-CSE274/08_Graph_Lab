@@ -30,6 +30,8 @@ Questions
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
+http://a.pomf.se/vbnxvn.png
+
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
 start learning some of the stl algorithm methods, they are very usefull (this advice isnt really specific toward this porject, but to c++ in general)
