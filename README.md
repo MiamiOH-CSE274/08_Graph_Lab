@@ -15,17 +15,17 @@ Reading
 Questions
 =========
 
-#### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
+1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - If the cost is bigger than 0, it will do it.
+2. remove - Removes it if it is found.
+3. getCost - Something is weird with this. Not sure what exactly is goign on.
 
-#### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
+2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - O(d), I believe
+2. remove - O(m + d)
+3. getCost - O(m)
 
 TODO
 
@@ -33,6 +33,6 @@ TODO
 
 Here's a link to both: http://imgur.com/cqnsJpz
 
-#### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
+4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+I can't figure out why I'm getting an error from -1 when it asks for -1 to be the answer...
