@@ -15,13 +15,15 @@ Reading
 Questions
 =========
 
+
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - cool!
+2. remove - radical!
+3. getCost - amazing!
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
+
 
 1. add - TODO
 2. remove - TODO
@@ -33,4 +35,4 @@ TODO
 
 #### 4. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
-TODO
+Where is the adjacency list created etc.?
