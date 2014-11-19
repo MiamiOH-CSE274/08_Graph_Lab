@@ -10,6 +10,7 @@
  */
  
 #include "Graph.h"
+#include <iostream>
 
 Graph::Graph(unsigned int numNodes){
     //resize the adjList container to the correct size of edges
