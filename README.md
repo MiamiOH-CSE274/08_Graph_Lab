@@ -18,7 +18,7 @@ Questions
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
 1. add - Works. Adds an edge with an associated cost provided the cost is valid.
-2. remove - Works. Removes an edge if it edges.
+2. remove - Works. Removes an edge if an edge exists.
 3. getCost - I get an error saying "Expected edge cost of -1, but got -1" which makes no sense so I think it works. 
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
