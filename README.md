@@ -17,9 +17,9 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. add - TODO
-2. remove - TODO
-3. getCost - TODO
+1. add - As long as cost is >= zero, it adds the edge.
+2. remove - Either in remove or getCost something might be messing up. In the tests, the last test says Error, expected -1, got -1. Not sure what is going on there.
+3. getCost - Same as above.
 
 #### 2. For each of your methods, what is the worst-case running time? You may write your answer in terms of `n` (the number of vertices), `m` (the number of edges), `d` (the maximum degree of any node in the graph), or any combination of these. Try to give the most informative bound that you can.
 
