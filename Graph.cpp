@@ -94,7 +94,7 @@ void Graph::removeEdge(int node1, int node2){
 }
 
 void Graph::dfs(int startingNode){
-	// Throw exceptions if the nodes are not in the graph
+	// Throw exceptions if the node is not in the graph
 	if (startingNode > adjList.size() || startingNode < 0){
 		throw new std::string("The first node is not in this graph.");
 	}
