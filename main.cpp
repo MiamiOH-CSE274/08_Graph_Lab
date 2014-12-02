@@ -28,8 +28,26 @@ void testGraph(){
     
 }
 
+void testTraversal() {
+	Graph g(6);
+	//Makes a graph like in my notebook for ease of testing
+	g.addEdge(0,1,10);
+	g.addEdge(0,5,10);
+	g.addEdge(1,4,10);
+	g.addEdge(4,5,10);
+	g.addEdge(4,3,10);
+	g.addEdge(3,2,10);
+	g.addEdge(2,5,10);
+
+	int nodeStart = 2;
+	std::cout << "The DFS will start at node " << nodeStart <<
+		", and should return: 2, 3, 4, 1, 0, 5" << std::endl;
+	g.DFStraversal(2);
+}
+
 int main(){
     testGraph();
+	testTraversal();
     
     return 0;
 }
