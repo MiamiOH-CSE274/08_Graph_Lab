@@ -4,6 +4,7 @@
 * Sources  : All code is original
 */
 #include "Graph.h"
+#include <string>
 #include <stack>
 #include <iostream>
 
@@ -34,14 +35,14 @@ double Graph::getCost(int node1, int node2){
 // If the edge already exists, just update the cost
 void Graph::addEdge(int node1, int node2, double cost){
 	if (cost < 0){
-		throw new std::string("The cost of an edge cannot be negative.");
+		throw std::string("The cost of an edge cannot be negative.");
 	}
 	// Throw exceptions if the nodes are not in the graph
 	if (node1 > adjList.size() - 1|| node1 < 0){
-		throw new std::string("The first node is not in this graph.");
+		throw std::string("The first node is not in this graph.");
 	}
 	if (node2 > adjList.size() - 1 || node2 < 0){
-		throw new std::string("The second node is not in this graph.");
+		throw std::string("The second node is not in this graph.");
 	}
 	else{
 		// If the edge already exists, just update the cost and return
@@ -70,10 +71,10 @@ void Graph::addEdge(int node1, int node2, double cost){
 void Graph::removeEdge(int node1, int node2){
 	// Throw exceptions if the nodes are not in the graph
 	if (node1 > adjList.size() - 1 || node1 < 0){
-		throw new std::string("The first node is not in this graph.");
+		throw std::string("The first node is not in this graph.");
 	}
 	if (node2 > adjList.size() - 1 || node2 < 0){
-		throw new std::string("The second node is not in this graph.");
+		throw std::string("The second node is not in this graph.");
 	}
 	else{
 		// Look for the edge in node1's list of edges and erase it
@@ -97,7 +98,7 @@ void Graph::removeEdge(int node1, int node2){
 void Graph::DFS(int startingNode){
 	// Throw an exception if the node is not in the graph
 	if (startingNode > adjList.size() - 1 || startingNode < 0){
-		throw new std::string("The starting node is not in this graph.");
+		throw std::string("The starting node is not in this graph.");
 	}
 	else{
 		std::stack<int> open;

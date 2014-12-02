@@ -42,13 +42,14 @@ int main(){
 	testGraph.addEdge(4, 1, 1);
 	testGraph.addEdge(1, 0, 1);
 	testGraph.addEdge(5, 4, 1);
-	testGraph.DFS(2);
-
+	
 	try{
 		testGraph.DFS(6);
 	}catch(std::string e){
 		std::cout << e << std::endl;
 	}
+	
+	testGraph.DFS(2);
 
 	return 0;
 }
