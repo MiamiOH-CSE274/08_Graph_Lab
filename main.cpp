@@ -46,9 +46,10 @@ int main(){
 	try{
 		testGraph.DFS(6);
 	}catch(std::string e){
-		std::cout << e << std::endl;
+		std::cout << "Caught exception: " << e << std::endl;
 	}
 	
+	std::cout << "DFS graph traversal: ";
 	testGraph.DFS(2);
 
 	return 0;
