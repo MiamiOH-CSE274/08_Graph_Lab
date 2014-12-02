@@ -1,4 +1,5 @@
-#include "Graph.cpp"
+#include <iostream>
+#include "Graph.h"
 
 void testGraph(){
     Graph g(10);

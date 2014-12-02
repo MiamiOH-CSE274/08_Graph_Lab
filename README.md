@@ -32,7 +32,7 @@ Questions
 
 #### 3. Exercise 12.1 from http://opendatastructures.org/ods-cpp/12_4_Discussion_Exercises.html. You may want to draw by hand, upload the picture online (Instagram, Twitter, imgur, or some place like that), and then just put a link here.
 
-...	0 |	1 |	2 |	3 |	4 |	5 |	6 |	7 |	8 |	9
+..  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ------------------------------------------
 0 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0 | 0
 1 | 0 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0

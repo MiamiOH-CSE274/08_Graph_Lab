@@ -18,15 +18,18 @@ Graph::Graph(unsigned int numNodes){
 }
 
 double Graph::getCost(int node1, int node2){
-    //Search node1 adjList for the edge to node2 and return cost
-    for(int i = 0; i < adjList[node1].edgeList.size(); i++) {
-        if(adjList[node1].edgeList[i].dest == node2) {
-            return adjList[node1].edgeList[i].cost;
-        }
-    }
-    
-    //Returns -1.0 if the edge is not in node1's adjList
-    return -1.0;
+	//Check to see if node1 is within the adjacency list, if not, return -1.0
+	if(node1 < adjList.size()) { 
+		//Search node1 adjList for the edge to node2 and return cost
+		for(int i = 0; i < adjList[node1].edgeList.size(); i++) {
+			if(adjList[node1].edgeList[i].dest == node2) {
+				return adjList[node1].edgeList[i].cost;
+			}
+		}
+	}
+	
+	//Is only reached if node1 isn't in the adjaceny list, or if node2 isn't a dest.
+	return -1.0;
 }
 
 // Add an edge from node1 to node2, AND from node2 to node1, with
@@ -55,7 +58,7 @@ void Graph::addEdge(int node1, int node2, double cost){
             //Only executes this for loop if the edge already exists
             //If outside outer for loop, would be executed again unnecessarily
             for(int j=0; j < adjList[node2].edgeList.size(); j++) {
-                if(adjList[node2].edgeList[j].dest == node2) {
+                if(adjList[node2].edgeList[j].dest == node1) {
                     adjList[node2].edgeList[j].cost = cost;
                     return;
                 }
