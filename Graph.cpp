@@ -33,6 +33,18 @@ void Graph::addEdge(int node1, int node2, double cost){
 	if (cost < 0)
 		throw std::string("The cost must be greater than 0.");
 
+	if (node1 < 0)
+		throw std::string("Node1 can't be less than 0.");
+
+	if (node2 < 0)
+		throw std::string("Node2 can't be less than 0.");
+
+	if (node1 > adjList.size())
+		throw std::string("Node1 can't be greater than the number of nodes.");
+
+	if (node2 > adjList.size())
+		throw std::string("Node2 can't be greater than the number of nodes.");
+
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 
 		if (adjList[node1].edgeList[i].dest == node2) {
