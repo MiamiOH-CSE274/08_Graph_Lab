@@ -16,7 +16,8 @@ public:
 	int dest; //Destination node number
 
 	Edge(double c, int d){
-		cost = c; dest = d;
+		cost = c; 
+		dest = d;
 	}
 	Edge(){
 		cost = -1; 
@@ -25,7 +26,7 @@ public:
 };
 
 
-//The node class has a edge list
+//The node class has an edge list
 class Node{
 public:
 	std::vector<Edge> edgeList;
