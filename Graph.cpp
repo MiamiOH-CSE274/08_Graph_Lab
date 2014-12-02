@@ -4,7 +4,8 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
-
+#include <stack>
+#include <iostream>
 
 // Caroline Danzi
 // 18 November 2014
@@ -97,5 +98,35 @@ void Graph::dfs(int startingNode){
 	// Throw exceptions if the node is not in the graph
 	if (startingNode > adjList.size() || startingNode < 0){
 		throw new std::string("The first node is not in this graph.");
+	}
+	else{
+		std::stack<int> open;
+		// NOTE: In the closed list, 0 indicates the node has not been 
+		// seen, 1 indicates it is in the open list, and 2 indicates
+		// the node has been visited and is in the closed list
+		std::vector<int> closed;
+		closed.resize(adjList.size());
+
+		// Push the starting node onto the stack and indicate that
+		// it is in the open list
+		open.push(startingNode);
+		closed[startingNode] = 1;
+
+		while(!open.empty()){
+			// Pop the last node off the stack, print it, and then
+			// indicate it is closed
+			int currentNode = open.top();
+			open.pop();
+			std::cout << currentNode << ", " << std::endl;
+			closed[currentNode] = 2;
+
+			// For each neighbor of the current node, add it to the open
+			// list unless it is already there or it is in the closed list
+			for(int i = 0; i < adjList[currentNode].edgeList.size(); i++){
+				if(closed[adjList[currentNode].edgeList[i].dest] == 0){
+					open.push(adjList[currentNode].edgeList[i].dest);
+					closed[adjList[currentNode].edgeList[i].dest] = 1;
+			}
+		}
 	}
 }
