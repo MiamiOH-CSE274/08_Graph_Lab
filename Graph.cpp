@@ -37,10 +37,10 @@ void Graph::addEdge(int node1, int node2, double cost){
 		throw new std::string("The cost of an edge cannot be negative.");
 	}
 	// Throw exceptions if the nodes are not in the graph
-	if (node1 > adjList.size() || node1 < 0){
+	if (node1 > adjList.size() - 1|| node1 < 0){
 		throw new std::string("The first node is not in this graph.");
 	}
-	if (node2 > adjList.size() || node2 < 0){
+	if (node2 > adjList.size() - 1 || node2 < 0){
 		throw new std::string("The second node is not in this graph.");
 	}
 	else{
@@ -69,10 +69,10 @@ void Graph::addEdge(int node1, int node2, double cost){
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
 	// Throw exceptions if the nodes are not in the graph
-	if (node1 > adjList.size() || node1 < 0){
+	if (node1 > adjList.size() - 1 || node1 < 0){
 		throw new std::string("The first node is not in this graph.");
 	}
-	if (node2 > adjList.size() || node2 < 0){
+	if (node2 > adjList.size() - 1 || node2 < 0){
 		throw new std::string("The second node is not in this graph.");
 	}
 	else{
@@ -96,8 +96,8 @@ void Graph::removeEdge(int node1, int node2){
 
 void Graph::DFS(int startingNode){
 	// Throw an exception if the node is not in the graph
-	if (startingNode > adjList.size() || startingNode < 0){
-		throw new std::string("The first node is not in this graph.");
+	if (startingNode > adjList.size() - 1 || startingNode < 0){
+		throw new std::string("The starting node is not in this graph.");
 	}
 	else{
 		std::stack<int> open;
@@ -117,12 +117,12 @@ void Graph::DFS(int startingNode){
 			// indicate it is closed
 			int currentNode = open.top();
 			open.pop();
-			std::cout << currentNode << " " << std::endl;
+			std::cout << currentNode << " ";
 			closed[currentNode] = 2;
 
 			// For each neighbor of the current node, add it to the open
 			// list unless it is already there or it is in the closed list
-			for(int i = 0; i < adjList[currentNode].edgeList.size(); i++){
+			for(unsigned int i = 0; i < adjList[currentNode].edgeList.size(); i++){
 				if(closed[adjList[currentNode].edgeList[i].dest] == 0){
 					open.push(adjList[currentNode].edgeList[i].dest);
 					closed[adjList[currentNode].edgeList[i].dest] = 1;

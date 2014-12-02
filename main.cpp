@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include <iostream>
+#include <string>
 
 void testGraph(){
 	Graph g(10);
@@ -33,6 +34,21 @@ void testGraph(){
 
 int main(){
 	testGraph();
+	Graph testGraph(6);
+	testGraph.addEdge(0, 5, 1);
+	testGraph.addEdge(5, 2, 1);
+	testGraph.addEdge(2, 3, 1);
+	testGraph.addEdge(3, 4, 1);
+	testGraph.addEdge(4, 1, 1);
+	testGraph.addEdge(1, 0, 1);
+	testGraph.addEdge(5, 4, 1);
+	testGraph.DFS(2);
+
+	try{
+		testGraph.DFS(6);
+	}catch(std::string e){
+		std::cout << e << std::endl;
+	}
 
 	return 0;
 }
