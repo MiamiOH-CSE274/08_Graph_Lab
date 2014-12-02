@@ -89,3 +89,6 @@ void Graph::removeEdge(int node1, int node2){
     }
 }
 
+void Graph::DFStraversal(int node) {
+
+}
