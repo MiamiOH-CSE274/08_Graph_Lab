@@ -14,6 +14,11 @@ int Graph::getCost(int node1, int node2){
 
 	int edgeListSize = adjList.at(node1).edgeList.size();
 	int edgeListSize2 = adjList.at(node2).edgeList.size();
+
+	if(edgeListSize > adjList.size() || edgeListSize2 > adjList.size()){
+		throw std::string("Edge Lists cannot have more items than nodes in the graph!");
+	}
+
 	for(int i = 0; i < edgeListSize2; i++){
 		Edge edgeElement = adjList.at(node1).edgeList.at(i);
 		if(edgeElement.dest == node2)
@@ -32,8 +37,13 @@ void Graph::addEdge(int node1, int node2, double cost){
 	if(cost < 0)
 		throw std::string("Cost cannot be less than zero");
 	
-	Edge* j = new Edge(cost, node2);
-	Edge* k = new Edge(cost, node1);
+	Edge j;
+	j.cost = cost;
+	j.dest = node2;
+	Edge k;
+	k.cost = cost;
+	k.dest = node1;
+	
 
 	if(getCost(node1, node2) != 0){
 		for(unsigned int i = 0; i < edgeListSize1; i++){
@@ -46,8 +56,8 @@ void Graph::addEdge(int node1, int node2, double cost){
 		}
 	}
 
-	adjList.at(node1).edgeList.push_back(*(j));
-	adjList.at(node2).edgeList.push_back(*(k));
+	adjList.at(node1).edgeList.push_back(j);
+	adjList.at(node2).edgeList.push_back(k);
 	
 }
 
@@ -60,6 +70,10 @@ void Graph::removeEdge(int node1, int node2){
 	int edgeListSize1 = adjList.at(node1).edgeList.size();
 	int edgeListSize2 = adjList.at(node2).edgeList.size();
 	
+	if(edgeListSize > adjList.size() || edgeListSize2 > adjList.size()){
+		throw std::string("Edge Lists cannot have more items than nodes in the graph!");
+	}
+
 	for(unsigned int i = 0; i < edgeListSize1; i++){
 		Edge edgeElement = adjList.at(node1).edgeList.at(i);
 		if(edgeElement.dest == node2)
