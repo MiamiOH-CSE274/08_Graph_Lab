@@ -1,8 +1,8 @@
 /*****
- * Author   : brinkmwj
- * Date     : 2009-11-06
- * Sources  : All code is original
- */
+* Author   : brinkmwj
+* Date     : 2009-11-06
+* Sources  : All code is original
+*/
 #include "Graph.h"
 #include <stack>
 #include <iostream>
@@ -94,8 +94,8 @@ void Graph::removeEdge(int node1, int node2){
 	}
 }
 
-void Graph::dfs(int startingNode){
-	// Throw exceptions if the node is not in the graph
+void Graph::DFS(int startingNode){
+	// Throw an exception if the node is not in the graph
 	if (startingNode > adjList.size() || startingNode < 0){
 		throw new std::string("The first node is not in this graph.");
 	}
@@ -103,7 +103,7 @@ void Graph::dfs(int startingNode){
 		std::stack<int> open;
 		// NOTE: In the closed list, 0 indicates the node has not been 
 		// seen, 1 indicates it is in the open list, and 2 indicates
-		// the node has been visited and is in the closed list
+		// the node has been visited and is now in the closed list
 		std::vector<int> closed;
 		closed.resize(adjList.size());
 
@@ -117,7 +117,7 @@ void Graph::dfs(int startingNode){
 			// indicate it is closed
 			int currentNode = open.top();
 			open.pop();
-			std::cout << currentNode << ", " << std::endl;
+			std::cout << currentNode << " " << std::endl;
 			closed[currentNode] = 2;
 
 			// For each neighbor of the current node, add it to the open
@@ -126,6 +126,7 @@ void Graph::dfs(int startingNode){
 				if(closed[adjList[currentNode].edgeList[i].dest] == 0){
 					open.push(adjList[currentNode].edgeList[i].dest);
 					closed[adjList[currentNode].edgeList[i].dest] = 1;
+				}
 			}
 		}
 	}
