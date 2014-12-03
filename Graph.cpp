@@ -4,15 +4,16 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
+#include <iostream>
 
-Graph::Graph(unsigned int numNodes){
+Graph::Graph(unsigned int numVertices){
 
 }
 
-double Graph::getCost(int node1, int node2){
-	for (unsigned int x = 0; x < adjList[node1].edgeList.size; x++){
-		if (adjList[node1].edgeList[x].dest == node2){
-			return adjList[node1].edgeList[x].cost;
+double Graph::getCost(int vert1, int vert2){
+	for (int x = 0; x < adjList[vert1].edgeList.size; x++){
+		if (adjList[vert1].edgeList[x].dest == vert2){
+			return adjList[vert1].edgeList[x].cost;
 		}
 	}
   return -1.0;
@@ -20,33 +21,43 @@ double Graph::getCost(int node1, int node2){
 
 //Add an edge from node1 to node2, and from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
-void Graph::addEdge(int node1, int node2, double cost){
+void Graph::addEdge(int vert1, int vert2, double cost){
 	if (cost < 0){
 		throw std::string("Negative cost is not allowed");
 	}
-	for (unsigned int x = 0; x < adjList[node1].edgeList.size; x++){
-		if (adjList[node1].edgeList[x].dest == node2){
-			adjList[node1].edgeList[x] = Edge(cost, node2);
+	for (unsigned int x = 0; x < adjList[vert1].edgeList.size; x++){
+		if (adjList[vert1].edgeList[x].dest == vert2){
+			adjList[vert1].edgeList[x] = Edge(cost, vert2);
 		}
 	}
-	for (unsigned int x = 0; x < adjList[node2].edgeList.size; x++){
-		if (adjList[node2].edgeList[x].dest == node1){
-			adjList[node2].edgeList[x] = Edge(cost, node1);
+	for (unsigned int x = 0; x < adjList[vert2].edgeList.size; x++){
+		if (adjList[vert2].edgeList[x].dest == vert1){
+			adjList[vert2].edgeList[x] = Edge(cost, vert1);
 		}
 	}
 }
 
 //Remove the edge from node1 to node2, and also from node2 to node1.
 // If there are no such edges, then don't do anything.
-void Graph::removeEdge(int node1, int node2){
-	for (unsigned int x = 0; x < adjList[node1].edgeList.size; x++){
-		if (adjList[node1].edgeList[x].dest == node2){
-			adjList[node1].edgeList[x] = Edge();
+void Graph::removeEdge(int vert1, int vert2){
+	for (unsigned int x = 0; x < adjList[vert1].edgeList.size; x++){
+		if (adjList[vert1].edgeList[x].dest == vert2){
+			adjList[vert1].edgeList[x] = Edge();
 		}
 	}
-	for (unsigned int x = 0; x < adjList[node2].edgeList.size; x++){
-		if (adjList[node2].edgeList[x].dest == node1){
-			adjList[node2].edgeList[x] = Edge();
+	for (unsigned int x = 0; x < adjList[vert2].edgeList.size; x++){
+		if (adjList[vert2].edgeList[x].dest == vert1){
+			adjList[vert2].edgeList[x] = Edge();
 		}
 	}
+}
+
+void Graph::printEdges(unsigned int numVertices){
+	for (unsigned int x = 0; x < numVertices; x++){
+		std::cout << "Vertex " << x << " has " << adjList[x].edgeList.size << " edges.";
+	}
+
+
+
+
 }
