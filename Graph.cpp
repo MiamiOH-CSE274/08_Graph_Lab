@@ -6,11 +6,7 @@
 #include "Graph.h"
 
 Graph::Graph(unsigned int numNodes){
-	for (unsigned int y = 0; y < numNodes; y++){
-		for (unsigned int x = 0; x < adjList[y].edgeList.size; x++){
-			adjList[y].edgeList[x] = Edge();
-		}
-	}
+
 }
 
 double Graph::getCost(int node1, int node2){
