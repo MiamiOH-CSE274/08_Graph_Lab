@@ -92,3 +92,21 @@ void Graph::removeEdge(int node1, int node2)
 	// it will be
 	adjList[node2].edgeList.erase(iterator);
 }
+
+double Graph::dijkstra(int source, int dest)
+{
+	std::array<double> distances(adjList.size());
+
+	// set the distance to source node to 0
+	distances[source] = 0;
+
+	// initialize distance to every other node to infitity (-1 in this case
+	// since negative edge lengths arent used in this graph
+	for (unsigned int i = 1; i < adjList.size(); i++) {
+		distances[i] = -1;
+	}
+
+	
+	
+	return distances[dest];
+}
