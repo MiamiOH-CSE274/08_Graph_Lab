@@ -35,12 +35,34 @@ void Graph::addEdge(int node1, int node2, double cost)
 	if (cost < 0) {
 		throw std::string("error: cost is < 0");
 	}
+	
+	if (getCost(node1, node2) == -1.0) {
+		// no edge exists yet, add them
+		
+		Edge edge1(cost, node2);
+		Edge edge2(cost, node1);
 
-	Edge edge1(cost, node2);
-	Edge edge2(cost, node1);
-
-	adjList[node1].edgeList.push_back(edge1);
-	adjList[node2].edgeList.push_back(edge2);
+		adjList[node1].edgeList.push_back(edge1);
+		adjList[node2].edgeList.push_back(edge2);
+	} else {
+		// this edge already exists, just update its value
+		
+		auto iterator = std::find_if(std::begin(adjList[node1].edgeList),
+					     std::end(adjList[node1].edgeList),
+					     [&] (const Edge &edge) {
+					             return edge.dest == node2;
+					     });
+					     
+		iterator->dest = node2;
+		
+		auto iterator = std::find_if(std::begin(adjList[node2].edgeList),
+					     std::end(adjList[node2].edgeList),
+					     [&] (const Edge &edge) {
+					             return edge.dest == node1;
+					     });
+					     
+		iterator->dest = node1;
+	}
 }
 
 // Remove the edge from node1 to node2, and also from node2 to node1.
