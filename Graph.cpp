@@ -7,6 +7,9 @@
 
 #include <string>
 #include <algorithm>
+#include <array>
+#include <queue>
+#include <iostream>
 
 Graph::Graph(unsigned int numNodes) : adjList(numNodes)
 {
@@ -55,7 +58,7 @@ void Graph::addEdge(int node1, int node2, double cost)
 					     
 		iterator->dest = node2;
 		
-		auto iterator = std::find_if(std::begin(adjList[node2].edgeList),
+		iterator = std::find_if(std::begin(adjList[node2].edgeList),
 					     std::end(adjList[node2].edgeList),
 					     [&] (const Edge &edge) {
 					             return edge.dest == node1;
@@ -93,20 +96,109 @@ void Graph::removeEdge(int node1, int node2)
 	adjList[node2].edgeList.erase(iterator);
 }
 
-double Graph::dijkstra(int source, int dest)
+std::vector<Edge> Graph::neighbors(int node)
 {
-	std::array<double> distances(adjList.size());
+	return adjList[node].edgeList;
+}
 
-	// set the distance to source node to 0
-	distances[source] = 0;
+std::vector<double> Graph::dijkstra(int source)
+{
+	// stores the distance from source to each node
+	std::vector<double> distances(adjList.size());
 
-	// initialize distance to every other node to infitity (-1 in this case
-	// since negative edge lengths arent used in this graph
-	for (unsigned int i = 1; i < adjList.size(); i++) {
-		distances[i] = -1;
+	// stores which nodes have been looked at
+	std::vector<bool> visited_nodes(adjList.size());
+
+	// stores the pervious node of each node in the optimal path
+	std::vector<int> prev_node(adjList.size());
+
+	// the compare function for the priority queue, the nodes are
+	// added to the queue along with there distance from the source
+	// and should be sorted by that distance
+	auto compare = [&] (std::pair<int, double> &n1,
+			    std::pair<int, double> &n2) {
+		if (n1.second == -1) {
+			return false;
+		}
+
+		if (n2.second == -1) {
+			return true;
+		}
+		
+		return n1.second < n2.second;
+	};
+
+	std::vector< std::pair<int, double> > node_queue(adjList.size());
+
+	// initialize distance to every node to infitity (-1 in this case
+	// since negative edge lengths arent used in this graph.  add add every
+	// node to the queue of nodes
+	for (unsigned int i = 0; i < adjList.size(); i++) {
+		// the distance to the source item should be 0
+		if (i == source) {
+			distances[i] = 0;
+		} else {
+			distances[i] = -1;
+			prev_node[i] = -1;
+		}
+		
+		node_queue[i] = (std::make_pair(i, distances[i]));
+		visited_nodes[i] = false;
 	}
 
+	// std::priority_queue does not have the ability to decrease the priority
+	// of an item, so we will use a simple array for this and just make it a heap
+	std::sort(node_queue.begin(), node_queue.end(), compare);
+
+	while (node_queue.size() != 0) {
+		// get the item in node_queue with the smallest distance
+
+		std::pair<int, double> node_pair = node_queue.front();
+		node_queue.erase(node_queue.begin());
+		int node1 = node_pair.first;
+		double dist = node_pair.second;
+
+		// mark this node as visited
+		visited_nodes[node1] = true;
+
+		// loop through every neighbor of this node
+		for (auto &edge : neighbors(node1)) {
+			int node2 = edge.dest;
+			
+			// only look at this neighbor if it hasnt been looked at yet
+			if (visited_nodes[node2] == false) {
+				double temp_dist = distances[node1] + edge.cost;
+
+				// if this distance is smaller than our current best guess, update it
+				if (temp_dist < distances[node2] || distances[node2] < 0) {
+					distances[node2] = temp_dist;
+					prev_node[node2] = node1;
+
+					auto it = std::find_if(node_queue.begin(),
+							       node_queue.end(),
+							       [&] (const std::pair<int, double> &n) {
+								       return n.first == node2;
+							       });
+
+					// update the priority for this node, this check of < 0 must
+					// be done because -1 is used to represent a priority of infinity
+					if (it->second < 0) {
+						it->second = temp_dist;
+					} else {
+						it->second -= temp_dist;
+					}
+
+					// make sure the node_queue vector continues to act like a queue
+					std::sort(node_queue.begin(), node_queue.end(), compare);
+				}
+			}
+		}
+	}
 	
-	
-	return distances[dest];
+	return distances;
+}
+
+double Graph::distance(int source, int dest)
+{
+	return dijkstra(source)[dest];
 }

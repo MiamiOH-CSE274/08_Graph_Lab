@@ -53,6 +53,13 @@ public:
 	// If there are no such edges, then don't do anything.
 	void removeEdge(int node1, int node2);
 
+	// get the neighbors of a node
+	std::vector<Edge> neighbors(int node);
+
+	std::vector<double> dijkstra(int source);
+
+	double distance(int source, int dest);
+
 private:
 	std::vector<Node> adjList;	
 };
