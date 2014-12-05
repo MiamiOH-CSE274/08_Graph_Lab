@@ -16,7 +16,7 @@ double Graph::getCost(int node1, int node2)
 {
 	auto iterator = std::find_if(std::begin(adjList[node1].edgeList),
 				     std::end(adjList[node1].edgeList),
-				     [&] (const Edge edge) {
+				     [&] (const Edge &edge) {
 					     return edge.dest == node2;
 				     });
 
@@ -71,7 +71,7 @@ void Graph::removeEdge(int node1, int node2)
 {
 	auto iterator = std::find_if(std::begin(adjList[node1].edgeList),
 				     std::end(adjList[node1].edgeList),
-				     [&] (const Edge edge) {
+				     [&] (const Edge &edge) {
 					     return edge.dest == node2;
 				     });
 
@@ -84,7 +84,7 @@ void Graph::removeEdge(int node1, int node2)
 
 	iterator = std::find_if(std::begin(adjList[node2].edgeList),
 				std::end(adjList[node2].edgeList),
-				[&] (const Edge edge) {
+				[&] (const Edge &edge) {
 					return edge.dest == node1;
 				});
 
