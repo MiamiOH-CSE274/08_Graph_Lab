@@ -19,7 +19,7 @@ Graph::Graph(unsigned int numNodes){
 double Graph::getCost(int node1, int node2){
 
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++)
-		if (adjList[node1].edgeList[i].dest == node2)
+		if (adjList[node1].edgeList[i].dest == node2 && node1 < adjList.size())
 			return adjList[node1].edgeList[i].cost;
 
 
@@ -48,7 +48,7 @@ void Graph::addEdge(int node1, int node2, double cost){
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 
 		if (adjList[node1].edgeList[i].dest == node2) {
-			adjList[node1].edgeList[i].cost == cost;
+			adjList[node1].edgeList[i].cost = cost;
 
 			for (unsigned int ii = 0; ii < adjList[node2].edgeList.size(); i++) 
 				
