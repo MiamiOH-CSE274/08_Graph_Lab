@@ -90,7 +90,7 @@ void Graph::removeEdge(int node1, int node2){
 	}
 }
 
-// The base of this code was found on www.geeksforgeeks.org and modified by Kyle Busdieker
+// The original code for this was found on www.geeksforgeeks.org and modified by Kyle Busdieker
 void Graph::DFSUtil(int v, bool visited[]) {
 
 	visited[v] = true;
