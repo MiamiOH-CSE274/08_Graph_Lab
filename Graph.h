@@ -44,6 +44,13 @@ public:
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
 
+  
+  void DFSUtil(int v, bool visited[]);
+
+  void DFS(int v);
+
+  int numVerts;
+
 private:
   std::vector<Node> adjList;	
 };

@@ -9,9 +9,14 @@
 // Date: November 22, 2014
 // The skeleton code was created by Bo Brinkman and modified by Kyle Busdieker with help from other students, Open Data Structures textbook, and the internet.
 #include "Graph.h"
+#include <iostream>
+#include <list>
+
+using namespace std;
 
 Graph::Graph(unsigned int numNodes){
 
+	numVerts = numNodes;
 	adjList.resize(numNodes);
 
 }
@@ -83,4 +88,30 @@ void Graph::removeEdge(int node1, int node2){
 			}
 		}
 	}
+}
+
+// The base of this code was found on www.geeksforgeeks.org and modified by Kyle Busdieker
+void Graph::DFSUtil(int v, bool visited[]) {
+
+	visited[v] = true;
+	cout << v << " ";
+
+	int counter = 0;
+	vector<Node>::iterator i;
+
+	for (i = adjList.begin(); i < adjList.end(); i++, counter++)
+		if (!visited[counter])
+			DFSUtil(counter, visited);
+
+}
+
+void Graph::DFS(int v) {
+
+	bool* visited = new bool[numVerts];
+
+	for (int i = 0; i < numVerts; i++)
+		visited[i] = false;
+
+	DFSUtil(v, visited);
+
 }
