@@ -11,7 +11,9 @@ Graph::Graph(unsigned int numNodes){
 	//	adjList[i].edgeList.resize(numNodes - 1);
 }
 
-double Graph::getCost(int node1, int node2){
+double Graph::getCost(int node1, int node2){ 
+	if (node1 >= adjList.size())
+		return -1;
 	for (unsigned int i = 0;i<adjList[node1].edgeList.size();i++){
 		if (adjList[node1].edgeList[i].dest == node2){
 			return adjList[node1].edgeList[i].cost;
@@ -34,8 +36,8 @@ void Graph::addEdge(int node1, int node2, double cost){
 			for (unsigned int j = 0; j < adjList[node2].edgeList.size(); j++){
 				if (adjList[node2].edgeList[j].dest == node1){
 					adjList[node2].edgeList[j].cost = cost;
-					//break to save on processing power
-					break;
+					//return to save on processing power
+					return;
 				}
 			}
 		}
@@ -48,17 +50,17 @@ void Graph::addEdge(int node1, int node2, double cost){
 void Graph::removeEdge(int node1, int node2){
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
 		if (adjList[node1].edgeList[i].dest == node2){
-			adjList[node1].edgeList[i].cost = -1;
+			adjList[node1].edgeList.erase(adjList[node1].edgeList.begin() + i);
 			//finds pair node2, node1
 			for (unsigned int j = 0; j < adjList[node2].edgeList.size(); j++){
 				if (adjList[node2].edgeList[j].dest == node1){
-					adjList[node2].edgeList[j].cost = -1;
-					//break to save on processing power
-					break;
+					adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + i);
+					//retu to save on processing power
+					return;
 				}
 			}
 		}
 	}
-	adjList[node1].edgeList.push_back(Edge(-1, node2));
-	adjList[node2].edgeList.push_back(Edge(-1, node1));
+	//adjList[node1].edgeList.push_back(Edge(-1, node2));
+	//adjList[node2].edgeList.push_back(Edge(-1, node1));
 }
