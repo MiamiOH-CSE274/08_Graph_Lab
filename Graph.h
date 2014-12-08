@@ -8,7 +8,7 @@
  */
 
 #include <vector>
-
+#include <stack>
 //The edge class has only a cost and a destination.
 class Edge{
 public:
@@ -44,6 +44,8 @@ public:
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
 
+
+  void dfs(int node);
 private:
   std::vector<Node> adjList;	
 };
