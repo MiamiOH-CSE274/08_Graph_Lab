@@ -9,6 +9,7 @@
 #include "Graph.h"
 #include <string>
 #include <algorithm>
+#include <list>
 
 
 Graph::Graph(unsigned int numNodes) : adjList(numNodes){
@@ -113,34 +114,63 @@ void Graph::removeEdge(int node1, int node2){
 	}
 }
 // A simple Breadth-First Search for the portfolio
-void Graph::BFS(int x) {
-	bool *closedList = new bool[V];
-	for (int i = 0; i < V; i++) // make the closed list and mark not visited
-		closedList[i] = false;
+//void Graph::BFS(int x) {
+//	bool *closedList = new bool[V];
+//	for (int i = 0; i < V; i++) // make the closed list and mark not visited
+//		closedList[i] = false;
+//
+//	std::vector<int> queue; // make the open list, queue, thing??
+//
+//	// Start with the current node, mark it closed and put in the queue/
+//	closedList[x] = true;
+//	queue.push_back(x);
+//
+//	std::vector<int>::iterator iter; // make an iterator...I wish I understood this fully
+//
+//	// Empty the queue.
+//	while (!queue.empty()) {
+//		// Dequeue a vertex
+//		x = queue.front();
+//		std::cout << x << " " << std::endl;
+//
+//		// Find the neighbors / neighbors of neighbors etc.
+//		//for (iter = adjList[x].edgeList.begin(); iter != adjList[x].edgeList.end(); ++iter){ // is there a reason we use ++i?
+//		for (iter = adj[x].begin(); iter != adj[x].end(); ++iter) {
+//			if (closedList[*iter] == false){
+//				closedList[*iter] = true;
+//				queue.push_back(*iter);
+//			} // end if
+//		} // end for
+//	} // end while
+//
+//}
 
-	std::vector<int> queue; // make the open list, queue, thing??
+// a depth first search for the portfolio
+// worked with Gage on this
+bool Graph::dfs(int node1, int node2) {
+	
+	std::list<int> openList; // tracks the nodes not yet visited
+	bool* closedList = new bool[adjList.size()]; // tracks which nodes are "closed"
 
-	// Start with the current node, mark it closed and put in the queue/
-	closedList[x] = true;
-	queue.push_back(x);
+	openList.push_back(node1);
 
-	std::vector<int>::iterator iter; // make an iterator...I wish I understood this fully
+	while (openList.size() > 0) {
+		for (unsigned int i = 0; i < adjList[openList.front()].edgeList.size(); i++){
+			
+			if (adjList[openList.front()].edgeList[i].dest == node2)
+				return true;
+			else if (closedList[adjList[openList.front()].edgeList[i].dest] == false)
+				openList.push_back((adjList[openList.front()].edgeList[i].dest));
 
-	// Empty the queue.
-	while (!queue.empty()) {
-		// Dequeue a vertex
-		x = queue.front();
-		std::cout << x << " " << std::endl;
+		}
 
-		// Find the neighbors / neighbors of neighbors etc.
-		//for (iter = adjList[x].edgeList.begin(); iter != adjList[x].edgeList.end(); ++iter){ // is there a reason we use ++i?
-		for (iter = adj[x].begin(); iter != adj[x].end(); ++iter) {
-			if (closedList[*iter] == false){
-				closedList[*iter] = true;
-				queue.push_back(*iter);
-			} // end if
-		} // end for
-	} // end while
+		int id = openList.front();
+		closedList[id] = true;
+		openList.pop_front();
+	}
+	
+	delete[] closedList;
+	return false;
+
 
 }
-

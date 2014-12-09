@@ -26,7 +26,8 @@ void testGraph(){
     std::cout << "SUCCESS: Got the right edge cost for removed edge" << std::endl;
   }
 
-  g.BFS(-1);
+  // g.BFS(-1);
+  std::cout << g.dfs(0, 1) << std::endl;
 
 }
 

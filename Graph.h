@@ -49,7 +49,8 @@ public:
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
 
-  void BFS(int x);
+  // void BFS(int x);
+  bool dfs(int node1, int node2);
 
 private:
   std::vector<Node> adjList;	
