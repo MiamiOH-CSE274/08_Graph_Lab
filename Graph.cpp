@@ -10,9 +10,13 @@ Graph::Graph(unsigned int numNodes) {
 }
 
 double Graph::getCost(int node1, int node2) {
-	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++)
-		if (adjList[node1].edgeList[i].dest == node2)
-			return adjList[node1].edgeList[i].cost;
+	if (!(node1 >= adjList.size())){
+		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++){
+			if (adjList[node1].edgeList[i].dest == node2)
+				return adjList[node1].edgeList[i].cost;
+		}
+	}
+	
 	return -1.0;
 }
 
@@ -22,6 +26,8 @@ double Graph::getCost(int node1, int node2) {
 void Graph::addEdge(int node1, int node2, double cost) {
 	if (cost < 0)
 		throw std::string("ERROR: edge cost < 0");
+	if (node1 >= adjList.size() || node2 >= adjList.size())
+		throw std::string("ERROR: node is outside range");
 
 	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 		if (adjList[node1].edgeList[i].dest == node2) {
