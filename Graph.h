@@ -8,6 +8,8 @@
  */
 
 #include <vector>
+#include <iostream>
+
 
 //The edge class has only a cost and a destination.
 class Edge{
@@ -27,6 +29,9 @@ public:
 //A Graph is just a list of nodes, where each node is responsible
 // for keeping a list of the edges adjacent to itself.
 class Graph{
+	int V; // # of vertices
+	std::vector<int> *adj;
+
 public:
   //You will need to resize the adjList before you can use it
   Graph(unsigned int numVertices);
@@ -43,6 +48,9 @@ public:
   //Remove the edge from node1 to node2, and also from node2 to node1.
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
+
+  // void BFS(int x);
+  bool dfs(int node1, int node2);
 
 private:
   std::vector<Node> adjList;	
