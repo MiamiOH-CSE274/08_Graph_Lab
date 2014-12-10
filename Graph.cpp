@@ -15,9 +15,11 @@ Graph::Graph(unsigned int numNodes){
 }
 
 double Graph::getCost(int node1, int node2){
-	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
-		if (adjList[node1].edgeList[i].dest == node2) {
-			return adjList[node1].edgeList[i].cost;
+	if ((unsigned int)node1 < adjList.size()) {
+		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
+			if (adjList[node1].edgeList[i].dest == node2) {
+				return adjList[node1].edgeList[i].cost;
+			}
 		}
 	}
   return -1.0;
@@ -32,15 +34,17 @@ void Graph::addEdge(int node1, int node2, double cost){
 	}
 
 	//Determine if the edge already exists. If so, update the cost
-	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
-		if (adjList[node1].edgeList[i].dest == node2) {
-			adjList[node1].edgeList[i].cost = cost;
+	if ((unsigned int)node1 < adjList.size()) {
+		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
+			if (adjList[node1].edgeList[i].dest == node2) {
+				adjList[node1].edgeList[i].cost = cost;
 
-			//If the edge is found, then find the opposite and update the cost
-			for (unsigned int i = 0; i < adjList[node2].edgeList.size(); i++) {
-				if (adjList[node2].edgeList[i].dest == node1) {
-					adjList[node2].edgeList[i].cost = cost;
-					return;
+				//If the edge is found, then find the opposite and update the cost
+				for (unsigned int i = 0; i < adjList[node2].edgeList.size(); i++) {
+					if (adjList[node2].edgeList[i].dest == node1) {
+						adjList[node2].edgeList[i].cost = cost;
+						return;
+					}
 				}
 			}
 		}
