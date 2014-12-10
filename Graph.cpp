@@ -18,7 +18,7 @@ Graph::Graph(unsigned int numNodes){
 
 double Graph::getCost(int node1, int node2){
 
-	if(node1 < adjList.size() && node2 < adjList.size()) {
+	if(node1 < adjList.size() && node2 < adjList.size() && node1 >= 0 && node2 >= 0) {
 		for(unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 			if(adjList[node1].edgeList[i].dest == node2) {
 				return adjList[node1].edgeList[i].cost;
@@ -36,7 +36,7 @@ void Graph::addEdge(int node1, int node2, double cost){
 		throw std::string("Error: Cost can not be less than zero");
 	}
 	
-	if(node1 < adjList.size() && node2 < adjList.size()) {
+	if(node1 < adjList.size() && node2 < adjList.size() && node1 >= 0 && node2 >= 0) {
 		for(unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 			if(adjList[node1].edgeList[i].dest == node2) {
 				for(unsigned int j = 0; j < adjList[node1].edgeList.size(); j++) {
@@ -57,7 +57,7 @@ void Graph::addEdge(int node1, int node2, double cost){
 // If there are no such edges, then don't do anything.
 void Graph::removeEdge(int node1, int node2){
 
-	if(node1 < adjList.size() && node2 < adjList.size()) {
+	if(node1 < adjList.size() && node2 < adjList.size() && node1 >= 0 && node2 >= 0) {
 
 		for(unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
 			if(adjList[node1].edgeList[i].dest == node2) {
