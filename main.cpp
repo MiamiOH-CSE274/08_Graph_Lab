@@ -30,6 +30,19 @@ void testGraph(){
 
 int main(){
   testGraph();
+    
+    Graph testGraph(7);
+    testGraph.addEdge(0, 4, 1);
+    testGraph.addEdge(4, 2, 1);
+    testGraph.addEdge(2, 3, 1);
+    testGraph.addEdge(2, 5, 1);
+    testGraph.addEdge(1, 0, 1);
+    testGraph.addEdge(4, 1, 1);
+    testGraph.addEdge(3, 5, 1);
+    testGraph.addEdge(4, 3, 1);
+    
+    std::cout << "DFS traversal: ";
+    testGraph.DFSTraversal(3);
 
   return 0;
 }
