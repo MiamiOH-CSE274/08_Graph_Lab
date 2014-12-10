@@ -4,7 +4,7 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
-
+#include <stack>
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
 	//for (unsigned int i = 0; i < numNodes; i++)
@@ -55,12 +55,19 @@ void Graph::removeEdge(int node1, int node2){
 			for (unsigned int j = 0; j < adjList[node2].edgeList.size(); j++){
 				if (adjList[node2].edgeList[j].dest == node1){
 					adjList[node2].edgeList.erase(adjList[node2].edgeList.begin() + i);
-					//retu to save on processing power
+					//return to save on processing power
 					return;
 				}
 			}
 		}
 	}
-	//adjList[node1].edgeList.push_back(Edge(-1, node2));
-	//adjList[node2].edgeList.push_back(Edge(-1, node1));
+}
+
+void Graph::depthFirstSearch(int start){
+	std::stack<int> open;
+	open.push(start);
+	int current = open.top();
+		for(unsigned int i = 0; i < adjList[current].edgeList.size(); i++){
+			open.push(adjList[current].edgeList[i].dest);
+		}
 }
