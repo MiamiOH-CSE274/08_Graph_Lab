@@ -87,8 +87,10 @@ void Graph::removeEdge(int node1, int node2){
 
 
 
-bool Graph::dfs(int node1, int node2) {
+bool Graph::dfs(int node1, int node2) {  // enter two nodes, the function will do a depth first search to see 
  
+	//enter two nodes, the function will do a depth first search to see if the nodes are directly or indirectly related
+
 	std::list<int> openList;
 	bool *closedList = new bool[adjList.size()];
 

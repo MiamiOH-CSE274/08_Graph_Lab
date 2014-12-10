@@ -99,13 +99,13 @@ void testGraph(){
     std::cout << "SUCCESS: Got the right edge cost for removed edge" << std::endl;
   }
 
-  std::cout << g.dfs(0, 4) << std::endl;
+  std::cout << g.dfs(0, 4) << std::endl; // should return value 0(false)
+   std::cout << g.dfs(2, 1) << std::endl; // should return value of 1(true)
 
 
 }
 
 int main(){
   testGraph();
-
   return 0;
 }
