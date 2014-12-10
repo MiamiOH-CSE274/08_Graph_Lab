@@ -39,10 +39,12 @@ void testTraversal() {
 	g.addEdge(3,2,10);
 	g.addEdge(2,5,10);
 
-	int nodeStart = 2;
-	std::cout << "The DFS will start at node " << nodeStart <<
-		", and should return: 2, 3, 4, 1, 0, 5" << std::endl;
-	g.DFStraversal(2);
+	g.DFStraversal(0);
+    g.DFStraversal(1);
+    g.DFStraversal(2);
+    g.DFStraversal(3);
+    g.DFStraversal(4);
+    g.DFStraversal(5);
 }
 
 int main(){

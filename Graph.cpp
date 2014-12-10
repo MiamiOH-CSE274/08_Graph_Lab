@@ -7,10 +7,12 @@
  *      used as models and implemented as unique
  *      code for this project. Samples found here:
  *      http://www.cplusplus.com/reference/vector/vector/
+ *      http://www.cplusplus.com/reference/list/list/
  */
- 
+
 #include "Graph.h"
 #include <iostream>
+#include <list>
 
 Graph::Graph(unsigned int numNodes){
     //resize the adjList container to the correct size of edges
@@ -19,7 +21,7 @@ Graph::Graph(unsigned int numNodes){
 
 double Graph::getCost(int node1, int node2){
 	//Check to see if node1 is within the adjacency list, if not, return -1.0
-	if(node1 < adjList.size()) { 
+	if(node1 < adjList.size()) {
 		//Search node1 adjList for the edge to node2 and return cost
 		for(int i = 0; i < adjList[node1].edgeList.size(); i++) {
 			if(adjList[node1].edgeList[i].dest == node2) {
@@ -89,8 +91,47 @@ void Graph::removeEdge(int node1, int node2){
     }
 }
 
-void Graph::DFStraversal(int node) {
-	int openList [6];
-	openList[0] = node;
-	
+void Graph::DFStraversal(int startNode) {
+	std::list<int> openList;
+    std::list<int> closedList;
+    int closedIndex = 0;
+    
+    //Add the first node to the open list and start there
+    openList.push_back(startNode);
+    
+    std::cout << std::endl << "The DFS traversal path for node " << startNode << " is:";
+    
+    while(!openList.empty()) {
+        //For loop visiting all edge's of the front node's adjList, adding
+        //to the openList as needed
+        for(unsigned int adjIndex = 0; adjIndex < adjList[openList.front()].edgeList.size(); adjIndex++) {
+            
+            //Tests to see if in the open or closed lists already
+            bool isOnList = false;
+            for(std::list<int>::iterator it=openList.begin(); it!=openList.end(); it++) {
+                if(adjList[openList.front()].edgeList[adjIndex].dest == *it) {
+                    isOnList = true;
+                }
+            }
+            for(std::list<int>::iterator it=closedList.begin(); it!=closedList.end(); it++){
+                if(adjList[openList.front()].edgeList[adjIndex].dest == *it) {
+                    isOnList = true;
+                }
+            }
+            
+            if(!isOnList) {
+                openList.push_back(adjList[openList.front()].edgeList[adjIndex].dest);
+                //openList.resize();
+            }
+        }
+        
+        //Add the first element to the closedList, cout that it was visited
+        closedList.push_back(*openList.begin());
+        openList.pop_front();
+        //closedList.resize();
+        std::cout << " " << closedList.back();
+        closedIndex++;
+    }
+    
+    std::cout << std::endl;
 }

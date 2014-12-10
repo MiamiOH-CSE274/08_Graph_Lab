@@ -48,8 +48,4 @@ public:
     
 private:
     std::vector<Node> adjList;
-    
-    //Allows the open and closed lists to grow in size if there are
-    //more nodes than expected
-    void grow();
 };
