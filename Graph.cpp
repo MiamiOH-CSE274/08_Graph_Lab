@@ -54,10 +54,18 @@ void Graph::removeEdge(int vert1, int vert2){
 
 void Graph::printEdges(unsigned int numVertices){
 	for (unsigned int x = 0; x < numVertices; x++){
-		std::cout << "Vertex " << x << " has " << adjList[x].edgeList.size << " edges.";
+		std::cout << "Vertex " << x << " has " << adjList[x].edgeList.size << " edges." << "\n";
 	}
 
+	for (unsigned int x = 0; x < numVertices; x++){
+		listEdges(adjList[x].edgeList);
+	}
 
+	
+}
 
-
+void Graph::listEdges(std::vector<Edge> edgeList){
+	for (unsigned int x = 0; x < edgeList.size; x++){
+		std::cout << "Destination node is " << edgeList[x].dest << "\n";
+	}
 }

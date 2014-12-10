@@ -45,6 +45,8 @@ public:
   void removeEdge(int vert1, int vert2);
 
   void printEdges(unsigned int numVertices);
+
+  void listEdges(std::vector<Edge> edgeList);
 private:
   std::vector<Node> adjList;	
 };
