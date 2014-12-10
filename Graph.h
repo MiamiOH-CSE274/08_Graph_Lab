@@ -33,17 +33,20 @@ public:
   
   //Return the cost of the edge from node1 to node2. If there
   // is no edge, return -1.
-  double getCost(int node1, int node2);
+  double getCost(int vert1, int vert2);
 
   //Add an edge from node1 to node2, and from node2 to node1, with
   // the given cost. If the cost is < 0, throw a string exception.
   // If the edge already exists, just update the cost
-  void addEdge(int node1, int node2, double cost);
+  void addEdge(int vert1, int vert2, double cost);
 
   //Remove the edge from node1 to node2, and also from node2 to node1.
   // If there are no such edges, then don't do anything.
-  void removeEdge(int node1, int node2);
+  void removeEdge(int vert1, int vert2);
 
+  void printEdges(unsigned int numVertices);
+
+  void listEdges(std::vector<Edge> edgeList);
 private:
   std::vector<Node> adjList;	
 };
