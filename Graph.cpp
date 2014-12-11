@@ -4,9 +4,11 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
+#include <iostream>
 
 Graph::Graph(unsigned int numNodes){
   adjList.resize(numNodes);
+  numVerts = numNodes;
 }
 
 double Graph::getCost(int node1, int node2){
@@ -68,4 +70,29 @@ void Graph::removeEdge(int node1, int node2){
 
 
   }
+}
+// original code found on www.geeksforgeeks.org and modified with help from Kyle Busdieker
+void Graph::DFTUtil(int v, bool visited[]) {
+
+	visited[v] = true;
+	std::cout << v << " ";
+
+	int counter = 0;
+	std::vector<Node>::iterator i;
+
+	for (i = adjList.begin(); i < adjList.end(); i++, counter++)
+	if (!visited[counter])
+		DFTUtil(counter, visited);
+
+}
+
+void Graph::DFT() {
+
+	bool* visited = new bool[numVerts];
+
+	for (int i = 0; i < numVerts; i++)
+		visited[i] = false;
+
+	DFTUtil(0, visited);
+
 }
