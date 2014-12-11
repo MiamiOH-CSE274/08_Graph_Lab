@@ -5,32 +5,47 @@
  *
  * Author	: meslerke
  * Date		: 11/16/14
- * Sources	: cplusplus.com for help with using vectors
+ * Sources	: cplusplus.com for help with using vectors, geeksforgeeks.org for code for the last two methods
  */
 #include "Graph.h"
 #include <iostream>
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
+	V = numNodes;
 }
 
 double Graph::getCost(int node1, int node2){
-	if ((unsigned int)node1 < adjList.size()) {
-		for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
-			if (adjList[node1].edgeList[i].dest == node2) {
-				return adjList[node1].edgeList[i].cost;
-			}
+	if (node1 < 0 || node2 < 0) {
+		throw std::string("Node1 and Node2 must both be at least 0.");
+	}
+
+	if ((unsigned int)node1 > adjList.size() || (unsigned int)node2 > adjList.size()) {
+		throw std::string("Node1 and Node2 can't be greater than the total number of nodes.");
+	}
+
+	for (unsigned int i = 0; i < adjList[node1].edgeList.size(); i++) {
+		if (adjList[node1].edgeList[i].dest == node2) {
+			return adjList[node1].edgeList[i].cost;
 		}
 	}
+	
   return -1.0;
 }
 
 //Add an edge from node1 to node2, and from node2 to node1, with
 // the given cost. If the cost is < 0, throw a string exception.
 void Graph::addEdge(int node1, int node2, double cost){
+	if (node1 < 0 || node2 < 0) {
+		throw std::string("Node1 and Node2 cannot be smaller than 0.");
+	}
+
+	if ((unsigned int)node1 > adjList.size() || (unsigned int)node2 > adjList.size()) {
+		throw std::string("Node1 and Node2 can't be greater than the total number of nodes.");
+	}
+
 	if (cost < 0) {
-		std::cout << "ERROR: cost cannot be smaller than 0" << std::endl;
-		return;
+		throw std::string("ERROR: cost cannot be smaller than 0");
 	}
 
 	//Determine if the edge already exists. If so, update the cost
@@ -72,4 +87,27 @@ void Graph::removeEdge(int node1, int node2){
 			}
 		}
 	}
+}
+
+//the code for these two methods were taken from www.geeksforgeeks.org and slightly edited by me
+void Graph::DFSUtil(int v, bool visited[]) {
+
+	visited[v] = true;
+	std::cout << v << " " << std::endl;
+
+	std::vector<Node>::iterator i;
+	int num = 0;
+
+	for (i = adjList.begin(); i != adjList.end(); ++i)
+		if (!visited[num])
+			DFSUtil(num, visited);
+}
+
+void Graph::DFS(int v) {
+	// Mark all the vertices as not visited
+	bool *visited = new bool[V];
+	for (int i = 0; i < V; i++)
+		visited[i] = false;
+
+	DFSUtil(v, visited);
 }
