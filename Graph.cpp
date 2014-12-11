@@ -1,7 +1,8 @@
 /*****
 * Author   : Sam Bowdler
 * Date     : 2014-11-13
-* Sources  : All code is original, empty template methods given from brinkmwj
+* Sources  : All code is original, empty template methods given from brinkmwj,
+* 		some help from www.geeksforgeeks.org for DFT.
 */
 #include "Graph.h"
 
@@ -63,4 +64,23 @@ void Graph::removeEdge(int node1, int node2) {
 			}
 		}
 	}
+}
+
+void Graph::DFTReg(int a, bool vis[]) {
+	vis[a] = true;
+	std::cout << a << " ";
+
+	int i = 0;
+	std::vector<Node>::iterator j;
+
+	for (j = adjList.begin(); j < adjList.end(); j++, i++)
+		if (!vis[i])
+			DFTReg(i, vis);
+}
+
+void Graph::DFT() {
+	bool* vis = new bool[numVerts];
+	for (int i = 0; i < numVerts; i++)
+		vis[i] = false;
+	DFTReg(0, vis);
 }
