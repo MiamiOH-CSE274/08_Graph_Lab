@@ -17,7 +17,7 @@ void testGraph(){
   } else {
     std::cout << "SUCCESS: Got the right edge cost for non-existent edge" << std::endl;
   }
-  
+  g.DFS(1);
   g.removeEdge(1,0);
   if(g.getCost(0,1) != -1 || g.getCost(1,0) != -1){
     std::cout << "ERROR: Expected edge cost of -1, got " << g.getCost(1,0) << std::endl;

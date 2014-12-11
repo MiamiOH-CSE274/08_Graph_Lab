@@ -4,6 +4,7 @@
  * Sources  : All code is original
  */
 #include "Graph.h"
+#include <stack>
 
 Graph::Graph(unsigned int numNodes){
 	adjList.resize(numNodes);
@@ -61,3 +62,33 @@ void Graph::removeEdge(int node1, int node2){
   }
 
 }
+
+//need an open list, closed list
+/*add x to open list
+	compare other nodes to see if theres an edge
+		add those nodes to open list (check for duplicates)*/
+
+void Graph::DFS(int x)
+{
+	std::stack<int> open;
+	std::vector<int> closed;
+
+	open.push(x);
+	while(!open.empty())
+	{
+		int currVert = open.top();
+		open.pop();
+		//moving from open to closed. giving it a 1 to indicate it has been visited
+		closed[currVert] = 1;
+
+		for (unsigned int i = 0; i < adjList[currVert].edgeList.size(); i++)
+		{
+				if (closed[adjList[currVert].edgeList[i].dest] == 0)
+				{
+					//deleting node from stack
+					open.push(adjList[currVert].edgeList[i].dest);
+					//marking in closed list as visited
+					closed[adjList[currVert].edgeList[i].dest] = 1;
+				}
+		}
+	}}
