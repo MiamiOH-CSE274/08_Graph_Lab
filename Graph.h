@@ -9,6 +9,7 @@
 
 #include <vector>
 
+
 //The edge class has only a cost and a destination.
 class Edge{
 public:
@@ -28,6 +29,7 @@ public:
 // for keeping a list of the edges adjacent to itself.
 class Graph{
 public:
+
   //You will need to resize the adjList before you can use it
   Graph(unsigned int numVertices);
   
@@ -43,6 +45,10 @@ public:
   //Remove the edge from node1 to node2, and also from node2 to node1.
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
+  
+  int numVerts;
+  void DFS(int v);
+  void DFSUtil(int v, bool visited[]);
 
 private:
   std::vector<Node> adjList;	
