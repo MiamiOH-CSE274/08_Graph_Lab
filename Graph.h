@@ -43,6 +43,7 @@ public:
   //Remove the edge from node1 to node2, and also from node2 to node1.
   // If there are no such edges, then don't do anything.
   void removeEdge(int node1, int node2);
+  void DFS(int v);
 
 private:
   std::vector<Node> adjList;	
