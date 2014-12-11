@@ -9,9 +9,14 @@
  * Sources  : All code is original with some code provided by brinkmwj
  */
 #include "Graph.h"
+#include<iostream>
+#include <list>
+
+using namespace std;
 
 Graph::Graph(unsigned int numNodes){
 
+	numVerts = numNodes;
 	adjList.resize(numNodes);
 
 }
@@ -71,4 +76,30 @@ void Graph::removeEdge(int node1, int node2){
 			}
 		}
 	}
+}
+
+//Original code taken from http://www.geeksforgeeks.org/depth-first-traversal-for-a-graph/ and modified by myself with help from classmates to fit this project.
+void Graph::DFSUtil(int v, bool visited[]) {
+
+	visited[v] = true;
+	cout << v << " ";
+
+	int counter = 0;
+	vector<Node>::iterator i;
+
+	for (i = adjList.begin(); i < adjList.end(); i++, counter++)
+		if (!visited[counter])
+			DFSUtil(counter, visited);
+
+}
+
+void Graph::DFS(int v) {
+
+	bool* visited = new bool[numVerts];
+
+	for (int i = 0; i < numVerts; i++)
+		visited[i] = false;
+
+	DFSUtil(v, visited);
+
 }
